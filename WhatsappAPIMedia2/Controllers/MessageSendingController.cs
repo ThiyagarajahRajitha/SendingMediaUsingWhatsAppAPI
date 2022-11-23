@@ -87,8 +87,8 @@ namespace WhatsappAPIMedia2.Controllers
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "EAAMy0NJm8dkBABfVmJBPxAMOWOQjG0fhIa2BEBMaiwMZA6EJn22IIbqZCrW6Qu9PXUVEFRnZAcQwmrhalzbk5gAZCqZBeifa51HyhNrNHO5rk89GKZASsNHcZCFB2TCdicZBQTU6ZAZAJtMhe9EJU1jf5XPxNAd73r6bZCXwwOPwLcHy2tjFqZBmXxVLE8vW3w7bLbTQTESdFEZBCxYBZAbUC39PVgDwSZCi3SSiy8ZD");
                 var response = await client.PostAsync(url, multipartFormContent);
                 response.EnsureSuccessStatusCode();
-                var test= await JsonSerializer.DeserializeAsync<Test>(await response.Content.ReadAsStreamAsync());
-                return test.id;
+                var image= await JsonSerializer.DeserializeAsync<Image>(await response.Content.ReadAsStreamAsync());
+                return image.id;
 
             }
 
@@ -98,10 +98,5 @@ namespace WhatsappAPIMedia2.Controllers
         
     }
 
-}
-public class Test
-{
-    public string id { get; set; }
-}
-        
+}  
     
