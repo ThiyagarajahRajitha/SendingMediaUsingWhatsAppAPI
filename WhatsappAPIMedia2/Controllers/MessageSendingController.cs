@@ -61,7 +61,7 @@ namespace WhatsappAPIMedia2.Controllers
             var url = "https://graph.facebook.com/v15.0/112918351627372/messages";
             using var client = new HttpClient();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "EAAMy0NJm8dkBABfVmJBPxAMOWOQjG0fhIa2BEBMaiwMZA6EJn22IIbqZCrW6Qu9PXUVEFRnZAcQwmrhalzbk5gAZCqZBeifa51HyhNrNHO5rk89GKZASsNHcZCFB2TCdicZBQTU6ZAZAJtMhe9EJU1jf5XPxNAd73r6bZCXwwOPwLcHy2tjFqZBmXxVLE8vW3w7bLbTQTESdFEZBCxYBZAbUC39PVgDwSZCi3SSiy8ZD");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "EAAMy0NJm8dkBADiMxnBeJt9z3s7zlNbzT2ivNdtD7GqElUacKQvzlGxcyiDGqRdMw4uxqesFXv8hXWsXKUBbd8bZCPRZALFVsNkrlVvewZCY8nZCzsmIbbQfxtjRCGRgS95zAZA8QpIdZAppi4aEKSU9ZAlDd5A9ZCLRtVQa8rhpznbTuW1zzoNWGfFUuWNKvOZC7bHTecvQpLLLbvgKRlOsjHu116iIj5NcZD");
 
             var response = await client.PostAsync(url, data);
             var result = await response.Content.ReadAsStringAsync();
@@ -84,7 +84,7 @@ namespace WhatsappAPIMedia2.Controllers
                 //Send it
                 using var client = new HttpClient();
                 var url = "https://graph.facebook.com/v15.0/112918351627372/media";
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "EAAMy0NJm8dkBABfVmJBPxAMOWOQjG0fhIa2BEBMaiwMZA6EJn22IIbqZCrW6Qu9PXUVEFRnZAcQwmrhalzbk5gAZCqZBeifa51HyhNrNHO5rk89GKZASsNHcZCFB2TCdicZBQTU6ZAZAJtMhe9EJU1jf5XPxNAd73r6bZCXwwOPwLcHy2tjFqZBmXxVLE8vW3w7bLbTQTESdFEZBCxYBZAbUC39PVgDwSZCi3SSiy8ZD");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "EAAMy0NJm8dkBADiMxnBeJt9z3s7zlNbzT2ivNdtD7GqElUacKQvzlGxcyiDGqRdMw4uxqesFXv8hXWsXKUBbd8bZCPRZALFVsNkrlVvewZCY8nZCzsmIbbQfxtjRCGRgS95zAZA8QpIdZAppi4aEKSU9ZAlDd5A9ZCLRtVQa8rhpznbTuW1zzoNWGfFUuWNKvOZC7bHTecvQpLLLbvgKRlOsjHu116iIj5NcZD");
                 var response = await client.PostAsync(url, multipartFormContent);
                 response.EnsureSuccessStatusCode();
                 var image= await JsonSerializer.DeserializeAsync<Image>(await response.Content.ReadAsStreamAsync());
