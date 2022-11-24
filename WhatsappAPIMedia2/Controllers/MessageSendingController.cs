@@ -30,7 +30,7 @@ namespace WhatsappAPIMedia2.Controllers
                 type = "template",
                 template = new
                 {
-                    name = "sample_purchase_feedback",
+                    name = "invoiceimage",
                     language = new
                     {
                         code = "en_US"
@@ -57,7 +57,7 @@ namespace WhatsappAPIMedia2.Controllers
                                                     new
                                                         {
                                                         type = "text",
-                                                        text = "uy"
+                                                        text = 450
 
                                                         }
                                                 }
