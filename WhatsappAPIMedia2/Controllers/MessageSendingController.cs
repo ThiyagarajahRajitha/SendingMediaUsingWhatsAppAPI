@@ -30,27 +30,40 @@ namespace WhatsappAPIMedia2.Controllers
                 type = "template",
                 template = new
                 {
-                    name = "invoice",
+                    name = "sample_purchase_feedback",
                     language = new
                     {
                         code = "en_US"
                     },
-                    components = new[]
-                                {
-                                    new
+                    components = new dynamic[]
                                     {
-                                    type = "header",
-                                    parameters = new[]
-                                            { new
+                                        new{
+                                            type = "header",
+                                            parameters = new[]
                                                 {
-                                                type = "image",
-                                                image = new {
-                                                            id = imagId
+                                                    new
+                                                        {
+                                                        type = "image",
+                                                        image = new {
+                                                                id = imagId
+                                                                }
+                                                        }
+                                                }
+                                            },
+                                        new{
+                                            type = "body",
+                                            parameters = new[]
+                                                {
+                                                    new
+                                                        {
+                                                        type = "text",
+                                                        text = "uy"
+
                                                         }
                                                 }
                                             }
+
                                     }
-                                }
                 }
 
             };
@@ -61,7 +74,7 @@ namespace WhatsappAPIMedia2.Controllers
             var url = "https://graph.facebook.com/v15.0/112918351627372/messages";
             using var client = new HttpClient();
 
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "EAAMy0NJm8dkBADiMxnBeJt9z3s7zlNbzT2ivNdtD7GqElUacKQvzlGxcyiDGqRdMw4uxqesFXv8hXWsXKUBbd8bZCPRZALFVsNkrlVvewZCY8nZCzsmIbbQfxtjRCGRgS95zAZA8QpIdZAppi4aEKSU9ZAlDd5A9ZCLRtVQa8rhpznbTuW1zzoNWGfFUuWNKvOZC7bHTecvQpLLLbvgKRlOsjHu116iIj5NcZD");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "EAAMy0NJm8dkBADtW9ZA97sNQVJyWEkA6PoAHEZA1F3F9BZAk6YUxbM7e6dkv8osQMFWH68QnftdH3ZAdfMPpzfo03cycjBWOlmJuVQWXPxYnZCswVmWnLs5M2fdZBOOoNbHGdO7uXklgV3mSsOovvGw8mA7p3XFXMaSuzN3XF6JzODLiBcRyGtZCQxWqrT7UDzNuAOKIdxd7gZDZD");
 
             var response = await client.PostAsync(url, data);
             var result = await response.Content.ReadAsStringAsync();
@@ -70,7 +83,7 @@ namespace WhatsappAPIMedia2.Controllers
 
         private async Task<string> UploadImage()
         {
-            var filePath = @"C:\Users\Dell\Downloads\pexels-pixabay-60597.jpg";
+            var filePath = @"C:\Users\Dell\OneDrive - INEXIS CONSULTING\Desktop\invoicee.jpg";
             using (var multipartFormContent = new MultipartFormDataContent())
             {
                 //Load the file and set the file's content type header
@@ -84,7 +97,8 @@ namespace WhatsappAPIMedia2.Controllers
                 //Send it
                 using var client = new HttpClient();
                 var url = "https://graph.facebook.com/v15.0/112918351627372/media";
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "EAAMy0NJm8dkBADiMxnBeJt9z3s7zlNbzT2ivNdtD7GqElUacKQvzlGxcyiDGqRdMw4uxqesFXv8hXWsXKUBbd8bZCPRZALFVsNkrlVvewZCY8nZCzsmIbbQfxtjRCGRgS95zAZA8QpIdZAppi4aEKSU9ZAlDd5A9ZCLRtVQa8rhpznbTuW1zzoNWGfFUuWNKvOZC7bHTecvQpLLLbvgKRlOsjHu116iIj5NcZD");
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "EAAMy0NJm8dkBADtW9ZA97sNQVJyWEkA6PoAHEZA1F3F9BZAk6YUxbM7e6dkv8osQMFWH68QnftdH3ZAdfMPpzfo03cycjBWOlmJuVQWXPxYnZCswVmWnLs5M2fdZBOOoNbHGdO7uXklgV3mSsOovvGw8mA7p3XFXMaSuzN3XF6JzODLiBcRyGtZCQxWqrT7UDzNuAOKIdxd7gZDZD");
                 var response = await client.PostAsync(url, multipartFormContent);
                 response.EnsureSuccessStatusCode();
                 var image= await JsonSerializer.DeserializeAsync<Image>(await response.Content.ReadAsStreamAsync());
