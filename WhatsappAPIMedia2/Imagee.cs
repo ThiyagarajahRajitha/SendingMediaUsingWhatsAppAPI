@@ -1,6 +1,6 @@
 ﻿namespace WhatsappAPIMedia2
 {
-    public class Image
+    public class Imagee
     {
         public string id { get; set; }
     }

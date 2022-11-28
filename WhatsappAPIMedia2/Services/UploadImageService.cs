@@ -8,6 +8,8 @@ namespace WhatsappAPIMedia2.Service
         public async Task<string> UploadImage()
         {
             var filePath = @"C:\Users\Dell\OneDrive - INEXIS CONSULTING\Desktop\invoicee.jpg";
+
+            
             using (var multipartFormContent = new MultipartFormDataContent())
             {
                 //Load the file and set the file's content type header
@@ -25,7 +27,7 @@ namespace WhatsappAPIMedia2.Service
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "EAAMy0NJm8dkBADtW9ZA97sNQVJyWEkA6PoAHEZA1F3F9BZAk6YUxbM7e6dkv8osQMFWH68QnftdH3ZAdfMPpzfo03cycjBWOlmJuVQWXPxYnZCswVmWnLs5M2fdZBOOoNbHGdO7uXklgV3mSsOovvGw8mA7p3XFXMaSuzN3XF6JzODLiBcRyGtZCQxWqrT7UDzNuAOKIdxd7gZDZD");
                 var response = await client.PostAsync(url, multipartFormContent);
                 response.EnsureSuccessStatusCode();
-                var image = await JsonSerializer.DeserializeAsync<Image>(await response.Content.ReadAsStreamAsync());
+                var image = await JsonSerializer.DeserializeAsync<Imagee>(await response.Content.ReadAsStreamAsync());
                 return image.id;
 
             }

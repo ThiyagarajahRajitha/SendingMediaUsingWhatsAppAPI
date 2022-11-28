@@ -16,15 +16,15 @@ namespace WhatsappAPIMedia2.Controllers
     [ApiController]
     public class MessageSendingController : ControllerBase
     {
-        private SendMsgService sendMsgService;
+        private SendMsgService _sendMsgService;
         public MessageSendingController()
         {
-            sendMsgService = new SendMsgService();
+            _sendMsgService = new SendMsgService();
         }
         [HttpPost]
         public async Task<ActionResult> PostSendMsg(Contact contact)
         {
-            await sendMsgService.SendingMsgAsync(contact.PhoneNo);
+            await _sendMsgService.SendingMsgAsync(contact.PhoneNo);
             return Ok();
         }   
     }
